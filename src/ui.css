@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+:root {
+  --color-accent: #18a0fb;
+  --color-optional: #126ba7;
+
+  --color-bg: #fff;
+  --color-pad-hard: #333;
+  --color-pad-soft: #e5e5e5;
+
+  --color-text-main: #333;
+  --color-text-invert: #fff;
+  --color-text-optional: #b6b6b6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+body,
+button,
+textarea {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+button,
+h3,
+p,
+a {
+  user-select: none;
+}
+
+h3,
+p {
+  font-size: 11px;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+small {
+  font-size: 10px;
+  color: var(--color-text-optional);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--color-pad-hard);
+  border-radius: 6px;
+  color: var(--color-text-main);
+  font-size: 11px;
+  font-weight: 400;
+  height: 30px;
+  padding: 0px 15px;
+}
+
+button:active {
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+a:focus,
+button:focus,
+textarea:focus {
+  outline: none;
+}
+
+a:hover,
+button:hover,
+label:hover {
+  cursor: pointer;
+}
+
+hr {
+  background-color: var(--color-pad-soft);
+  border: none;
+  height: 1px;
+  width: 100%;
+}
+
+textarea {
+  background-color: var(--color-bg);
+  border-color: var(--color-pad-soft);
+  border-radius: 2px;
+  color: var(--color-text-main);
+  font-size: 11px;
+  height: 72px;
+  padding: 6px 8px;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: var(--color-text-optional);
+  font-size: 11px;
+}
+
+textarea:focus,
+textarea:hover {
+  border-color: var(--color-accent);
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  vertical-align: middle;
+  outline: none;
+  border: none;
+  padding: 0;
+  background: none;
+  width: 100%;
+}
+
+input[type="range"]:hover {
+  cursor: grab;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: var(--color-pad-soft);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border-radius: 100%;
+  background-color: var(--color-pad-hard);
+  height: 12px;
+  width: 12px;
+  margin-top: -2px;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  outline: none;
+}
+
+output {
+  font-size: 12px;
+}
+
+.plugin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.plugin__source-text,
+.plugin__random-generation,
+.plugin__support {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+}
+
+.plugin__help-popup {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+  opacity: 0;
+  display: flex;
+  pointer-events: none;
+  transition: all 300ms ease-in;
+  overflow-y: auto;
+}
+
+.plugin__help-popup_active {
+  top: 0;
+  opacity: 100;
+  pointer-events: initial;
+  transition: all 150ms ease-out;
+}
+
+.plugin__help-popup p {
+  margin: 0 0 8px 0;
+}
+
+.plugin__caption p:last-child {
+  margin: 0;
+}
+
+.plugin__title {
+  margin: 0 0 8px 0;
+}
+
+.plugin__textbox {
+  margin: 0 0 16px 0;
+}
+
+.plugin__button-paragraph {
+  margin: 0 0 8px 0;
+}
+
+.plugin__buttons-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plugin__range-container {
+  display: flex;
+  align-items: baseline;
+  height: 24px;
+}
+
+.plugin__range-container input {
+  margin: 0 8px 0 0;
+}
+
+.plugin__range-container output {
+  width: 24px;
+}
+
+.plugin__switcher {
+  display: flex;
+  margin: 0 0 16px 0;
+}
+
+.plugin__toggle {
+  height: 30px;
+  padding: 8px 15px;
+  border-radius: 2px;
+  margin: 0 2px 0 0;
+}
+
+.plugin__info {
+  margin: 16px;
+  display: flex;
+  place-items: center;
+}
+
+.plugin__info small {
+  margin: 0 16px 0 0;
+}
+
+.plugin__info small:last-child {
+  margin: 0;
+}
+
+input[type="radio"]:checked + .plugin__toggle {
+  background-color: var(--color-pad-soft);
+}

@@ -1,0 +1,25 @@
+{
+  "name": "coft",
+  "version": "1.0.1",
+  "description": "create objects from text",
+  "main": "code.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "author": "milsinery",
+  "dependencies": {
+    "faker": "^5.1.0",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.17.1",
+    "css-loader": "^3.1.0",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  }
+}

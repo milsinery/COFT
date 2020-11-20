@@ -1,0 +1,7 @@
+{
+  "name": "COFT — create objects from text",
+  "id": "903936058293238810",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
