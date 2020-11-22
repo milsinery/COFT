@@ -57,7 +57,7 @@ small {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-text-main);
   text-decoration: none;
 }
 
