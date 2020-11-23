@@ -1,6 +1,6 @@
 <div class="plugin effect-in">
   <div class="plugin__source-text">
-    <h3 class="plugin__title">Your content</h3>
+    <h3 class="plugin__title" id="title-first">Your Content</h3>
 
     <textarea
       class="plugin__textbox"
@@ -11,7 +11,7 @@
     ></textarea>
 
     <button class="plugin__button-paragraph" id="paragraph">
-      Create layers divided by paragraphs
+      Divide the text into paragraphs
     </button>
 
     <div class="plugin__buttons-line">
@@ -24,15 +24,13 @@
   <hr />
 
   <div class="plugin__random-generation">
-    <h3 class="plugin__title">Random Data</h3>
+    <h3 class="plugin__title" id="title-second">Сreate fragments with random</h3>
 
     <div class="plugin__switcher">
-      <input type="radio" name="random" value="city" id="city" checked />
-      <label class="plugin__toggle" for="city"><h3>City</h3></label>
-      <input type="radio" name="random" value="name" id="name" />
-      <label class="plugin__toggle" for="name"><h3>Name</h3></label>
+      <input type="radio" name="random" value="name" id="name" checked/>
+      <label class="plugin__toggle" for="name"><h3 id="name-label">Names</h3></label>
       <input type="radio" name="random" value="phone" id="phone" />
-      <label class="plugin__toggle" for="phone"><h3>Phone</h3></label>
+      <label class="plugin__toggle" for="phone"><h3 id="phone-label">Phone Numbers</h3></label>
     </div>
 
     <div id="range-container" class="plugin__range-container">
@@ -44,11 +42,20 @@
   <hr />
 
   <div class="plugin__info">
+    <small>
+      <a
+        href="#"
+        id="lang"
+      >
+        На русском
+      </a>
+    </small>
     <small
       ><a
         href="https://www.figma.com/community/plugin/903936058293238810/COFT-%E2%80%94-create-objects-from-text"
         rel="noopener noreferrer"
         target="_blank"
+        id="how-it-works"
         >How it works</a
       ></small
     >
@@ -57,8 +64,9 @@
         href="https://www.buymeacoffee.com/milsinery"
         target="_blank"
         rel="noopener noreferrer"
+        id="support"
       >
-        Support, share ideas and found bugs
+        Support or share ideas
       </a>
     </small>
   </div>

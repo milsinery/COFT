@@ -25,7 +25,7 @@ figma.ui.onmessage = (msg) => {
   if (range > 0) {
     if (selectedLength === 1 && selectedFirstType === "TEXT") {
       packInFrameObjects(
-        createRandom(randomType, range),
+        createRandom(randomType, range, lang),
         selectedFirst,
         selectedFirstParent
       );
@@ -35,13 +35,13 @@ figma.ui.onmessage = (msg) => {
       selectedSecondType === "FRAME"
     ) {
       packInSelectedFrame(
-        createRandom(randomType, range),
+        createRandom(randomType, range, lang),
         selectedFirst,
         selectedFirstParent,
         selectedSecond
       );
     } else if (selectedLength === 0) {
-      packInFrameText(createRandom(randomType, range));
+      packInFrameText(createRandom(randomType, range, lang));
     } else {
       return;
     }
@@ -162,17 +162,14 @@ function packInSelectedFrame(
   figma.notify("Done", { timeout: 1000 });
 }
 
-function createRandom(randomType, range) {
+function createRandom(randomType, range, lang) {
   const result = [];
+  faker.locale = lang;
 
-  if (randomType === "city") {
-    fillData(faker.address.city);
-  } else if (randomType === "name") {
+  if (randomType === "name") {
     fillData(faker.name.findName);
   } else if (randomType == "phone") {
     fillData(faker.phone.phoneNumber);
-  } else {
-    return;
   }
 
   function fillData(func) {
