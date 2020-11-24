@@ -2,6 +2,9 @@ import "./ui.css";
 
 // default init
 const settings = { randomType: "name", eng: true };
+const plugin = document.getElementById("plugin");
+plugin.classList.add("effect-in");
+setTimeout(() => plugin.classList.remove("effect-in"), 300);
 
 // default data for code
 parent.postMessage(
@@ -94,6 +97,8 @@ langBtn.onclick = () => langSwitcher();
 
 function langSwitcher() {
   settings.eng = !settings.eng;
+  plugin.classList.add("effect-lang-switch");
+  setTimeout(() => plugin.classList.remove("effect-lang-switch"), 300);
 
   parent.postMessage(
     {
