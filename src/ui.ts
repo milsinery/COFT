@@ -86,9 +86,9 @@ function randomTypeAction(msg) {
 // language switch functional
 const titleFirst = document.getElementById("title-first") as HTMLHeadingElement;
 const titleSecond = document.getElementById("title-second") as HTMLHeadingElement;
-const langBtn = document.getElementById("lang") as HTMLParagraphElement;
-const howItWorks = document.getElementById("how-it-works") as HTMLParagraphElement;
-const support = document.getElementById("support") as HTMLParagraphElement;
+const langBtn = document.getElementById("lang") as HTMLLinkElement;
+const howItWorks = document.getElementById("how-it-works") as HTMLLinkElement;
+const support = document.getElementById("support") as HTMLLinkElement;
 
 langBtn.onclick = () => langSwitcher();
 
@@ -104,6 +104,7 @@ const dictionary = {
   phoneLabel: ["Phone Numbers", "Номерами телефонов"],
   langBtn: ["На русском", "in English"],
   howItWorks: ["How it Works", "Помощь"],
+  howItWorksHref: ["https://www.figma.com/community/plugin/903936058293238810", "https://t.me/pluginsforfigma"],
   support: ["Support or share ideas", "Поддержка и обратная связь"],
 }
 
@@ -130,5 +131,6 @@ function langSwitcher() {
   phoneLabel.innerText = settings.eng ? dictionary.phoneLabel[0] : dictionary.phoneLabel[1];
   langBtn.innerText = settings.eng ? dictionary.langBtn[0] : dictionary.langBtn[1];
   howItWorks.innerText = settings.eng ? dictionary.howItWorks[0] : dictionary.howItWorks[1];
+  howItWorks.href = settings.eng ? dictionary.howItWorksHref[0] : dictionary.howItWorksHref[1];
   support.innerText = settings.eng ? dictionary.support[0] : dictionary.support[1];
 }
