@@ -99,8 +99,10 @@ function createFrame() {
   const frame = figma.createFrame();
   frame.layoutMode = "VERTICAL";
   frame.counterAxisSizingMode = "AUTO";
-  frame.horizontalPadding = 24;
-  frame.verticalPadding = 24;
+  frame.paddingLeft = 24;
+  frame.paddingRight = 24;
+  frame.paddingTop = 24;
+  frame.paddingBottom = 24;
   frame.cornerRadius = 8;
   frame.itemSpacing = 8;
   frame.expanded = false;
@@ -150,6 +152,8 @@ function packInSelectedFrame(
   selectedSecond
 ) {
   const frame = selectedSecond;
+  frame.layoutMode = frame.width > frame.height ? "HORIZONTAL" : "VERTICAL";
+  frame.counterAxisSizingMode = "AUTO"
   const originalText = selectedFirst.characters;
 
   content.map(async (item) => {

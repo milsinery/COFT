@@ -92,7 +92,7 @@ const support = document.getElementById("support") as HTMLLinkElement;
 
 langBtn.onclick = () => langSwitcher();
 
-const dictionary = {
+const variants = {
   titleFirst: ["Your Content", "Ваш контент"],
   textArea: ["Source text for division by rule", "Исходный текст для нарезки по правилу"],
   paragraph: ["Divide the text into paragraphs", "Разделить текст после абзаца"],
@@ -120,17 +120,17 @@ function langSwitcher() {
     "*"
   );
 
-  titleFirst.innerText = settings.eng ? dictionary.titleFirst[0] : dictionary.titleFirst[1];
-  text.placeholder = settings.eng ? dictionary.textArea[0] : dictionary.textArea[1];
-  paragraph.innerHTML = settings.eng ? dictionary.paragraph[0] : dictionary.paragraph[1];
-  comma.innerHTML = settings.eng ? dictionary.comma[0] : dictionary.comma[1];
-  dot.innerHTML = settings.eng ? dictionary.dot[0] : dictionary.dot[1];
-  semicolon.innerHTML = settings.eng ? dictionary.semicolon[0] : dictionary.semicolon[1];
-  titleSecond.innerText = settings.eng ? dictionary.titleSecond[0] : dictionary.titleSecond[1];
-  nameLabel.innerText = settings.eng ? dictionary.nameLabel[0] : dictionary.nameLabel[1]; 
-  phoneLabel.innerText = settings.eng ? dictionary.phoneLabel[0] : dictionary.phoneLabel[1];
-  langBtn.innerText = settings.eng ? dictionary.langBtn[0] : dictionary.langBtn[1];
-  howItWorks.innerText = settings.eng ? dictionary.howItWorks[0] : dictionary.howItWorks[1];
-  howItWorks.href = settings.eng ? dictionary.howItWorksHref[0] : dictionary.howItWorksHref[1];
-  support.innerText = settings.eng ? dictionary.support[0] : dictionary.support[1];
+  titleFirst.innerText = settings.eng ? variants.titleFirst[0] : variants.titleFirst[1];
+  text.placeholder = settings.eng ? variants.textArea[0] : variants.textArea[1];
+  paragraph.innerHTML = settings.eng ? variants.paragraph[0] : variants.paragraph[1];
+  comma.innerHTML = settings.eng ? variants.comma[0] : variants.comma[1];
+  dot.innerHTML = settings.eng ? variants.dot[0] : variants.dot[1];
+  semicolon.innerHTML = settings.eng ? variants.semicolon[0] : variants.semicolon[1];
+  titleSecond.innerText = settings.eng ? variants.titleSecond[0] : variants.titleSecond[1];
+  nameLabel.innerText = settings.eng ? variants.nameLabel[0] : variants.nameLabel[1]; 
+  phoneLabel.innerText = settings.eng ? variants.phoneLabel[0] : variants.phoneLabel[1];
+  langBtn.innerText = settings.eng ? variants.langBtn[0] : variants.langBtn[1];
+  howItWorks.innerText = settings.eng ? variants.howItWorks[0] : variants.howItWorks[1];
+  howItWorks.href = settings.eng ? variants.howItWorksHref[0] : variants.howItWorksHref[1];
+  support.innerText = settings.eng ? variants.support[0] : variants.support[1];
 }

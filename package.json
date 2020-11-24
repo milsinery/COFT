@@ -7,6 +7,7 @@
     "build": "tsc -p tsconfig.json"
   },
   "author": "milsinery",
+  "license": "",
   "dependencies": {
     "faker": "^5.1.0",
     "typescript": "^3.5.3"
