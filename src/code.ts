@@ -24,7 +24,7 @@ figma.ui.onmessage = (msg) => {
 
   // check random data
   if (range > 0) {
-    if(selectedLength === 1 && selectedFirstParentType === "FRAME") {
+    if(selectedLength === 1 && selectedFirstType === "FRAME") {
       packTextInSelectedFrame(createRandom(randomType, range, lang), selectedFirst);
     } else if (selectedLength === 1 && selectedFirstType === "TEXT") {
       packInFrameObjects(
@@ -56,7 +56,7 @@ figma.ui.onmessage = (msg) => {
     if (selectedLength === 0) {
       packInFrameText(text);
     } else if (selectedFirstParentType === "COMPONENT") {
-    } else if(selectedLength === 1 && selectedFirstParentType === "FRAME") {
+    } else if(selectedLength === 1 && selectedFirstType === "FRAME") {
       packTextInSelectedFrame(text, selectedFirst);
     } else if (selectedLength === 1 && selectedFirstType === "TEXT") {
       packInFrameObjects(text, selectedFirst, selectedFirstParent);
@@ -92,6 +92,7 @@ function createFrame() {
   const frame = figma.createFrame();
   frame.layoutMode = "VERTICAL";
   frame.counterAxisSizingMode = "AUTO";
+  frame.primaryAxisSizingMode = "AUTO";
   frame.paddingLeft = 24;
   frame.paddingRight = 24;
   frame.paddingTop = 24;
@@ -147,6 +148,7 @@ function packInSelectedFrame(
   const frame = selectedSecond;
   frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
   frame.counterAxisSizingMode = "AUTO"
+  frame.primaryAxisSizingMode = "AUTO";
   const originalText = selectedFirst.characters;
 
   content.map(async (item) => {
@@ -193,6 +195,6 @@ function createRandom(randomType, range, lang) {
       result.push(func());
     }
   }
-  
+
   return result;
 }
