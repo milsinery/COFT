@@ -1,4 +1,3 @@
-import { ClassificationTypeNames } from "typescript";
 import "./ui.css";
 
 // default init
@@ -93,15 +92,15 @@ const support = document.getElementById("support") as HTMLLinkElement;
 langBtn.onclick = () => langSwitcher();
 
 const variants = {
-  titleFirst: ["Your Content", "Ваш контент"],
+  titleFirst: ["Create from text", "Создать из текста"],
   textArea: ["Source text for division by rule", "Исходный текст для нарезки по правилу"],
   paragraph: ["Divide the text into paragraphs", "Разделить текст после абзаца"],
   comma: ["After the comma", "Запятой"],
   dot: ["Dot", "Точки"],
   semicolon: ["Semicolon", "Точки с запятой"],
-  titleSecond: ["Сreate fragments with random", "Создать фрагменты со случайными"],
-  nameLabel: ["Names", "Именами"],
-  phoneLabel: ["Phone Numbers", "Номерами телефонов"],
+  titleSecond: ["Сreate from random", "Создать из случайных"],
+  nameLabel: ["Names", "Имён"],
+  phoneLabel: ["Phone Numbers", "Телефонных номеров"],
   langBtn: ["На русском", "in English"],
   howItWorks: ["How it Works", "Помощь"],
   howItWorksHref: ["https://www.figma.com/community/plugin/903936058293238810", "https://t.me/pluginsforfigma"],
