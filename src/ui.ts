@@ -3,6 +3,7 @@ import "./ui.css";
 // default init
 const settings = { randomType: "name", eng: true };
 
+// default data for code
 parent.postMessage(
   {
     pluginMessage: {
@@ -91,22 +92,6 @@ const support = document.getElementById("support") as HTMLLinkElement;
 
 langBtn.onclick = () => langSwitcher();
 
-const variants = {
-  titleFirst: ["Create from text", "Создать из текста"],
-  textArea: ["Source text for division by rule", "Исходный текст для нарезки по правилу"],
-  paragraph: ["Divide the text into paragraphs", "Разделить текст после абзаца"],
-  comma: ["After the comma", "Запятой"],
-  dot: ["Dot", "Точки"],
-  semicolon: ["Semicolon", "Точки с запятой"],
-  titleSecond: ["Сreate from random", "Создать из случайных"],
-  nameLabel: ["Names", "Имён"],
-  phoneLabel: ["Phone Numbers", "Телефонных номеров"],
-  langBtn: ["На русском", "in English"],
-  howItWorks: ["How it Works", "Помощь"],
-  howItWorksHref: ["https://www.figma.com/community/plugin/903936058293238810", "https://t.me/pluginsforfigma"],
-  support: ["Support or share ideas", "Поддержка и обратная связь"],
-}
-
 function langSwitcher() {
   settings.eng = !settings.eng;
 
@@ -119,17 +104,17 @@ function langSwitcher() {
     "*"
   );
 
-  titleFirst.innerText = settings.eng ? variants.titleFirst[0] : variants.titleFirst[1];
-  text.placeholder = settings.eng ? variants.textArea[0] : variants.textArea[1];
-  paragraph.innerHTML = settings.eng ? variants.paragraph[0] : variants.paragraph[1];
-  comma.innerHTML = settings.eng ? variants.comma[0] : variants.comma[1];
-  dot.innerHTML = settings.eng ? variants.dot[0] : variants.dot[1];
-  semicolon.innerHTML = settings.eng ? variants.semicolon[0] : variants.semicolon[1];
-  titleSecond.innerText = settings.eng ? variants.titleSecond[0] : variants.titleSecond[1];
-  nameLabel.innerText = settings.eng ? variants.nameLabel[0] : variants.nameLabel[1]; 
-  phoneLabel.innerText = settings.eng ? variants.phoneLabel[0] : variants.phoneLabel[1];
-  langBtn.innerText = settings.eng ? variants.langBtn[0] : variants.langBtn[1];
-  howItWorks.innerText = settings.eng ? variants.howItWorks[0] : variants.howItWorks[1];
-  howItWorks.href = settings.eng ? variants.howItWorksHref[0] : variants.howItWorksHref[1];
-  support.innerText = settings.eng ? variants.support[0] : variants.support[1];
+  titleFirst.innerText = settings.eng ? "Create from text" : "Создать из текста";
+  text.placeholder = settings.eng ? "Source text for division by rule" : "Исходный текст для нарезки по правилу";
+  paragraph.innerHTML = settings.eng ? "Divide the text into paragraphs" : "Разделить текст после абзаца";
+  comma.innerHTML = settings.eng ? "After the comma" : "Запятой";
+  dot.innerHTML = settings.eng ? "Dot": "Точки";
+  semicolon.innerHTML = settings.eng ? "Semicolon" : "Точки с запятой";
+  titleSecond.innerText = settings.eng ? "Сreate from random" : "Создать из случайных";
+  nameLabel.innerText = settings.eng ? "Names" : "Имён";
+  phoneLabel.innerText = settings.eng ? "Phone Numbers" : "Телефонных номеров";
+  langBtn.innerText = settings.eng ? "На русском" : "in English";
+  howItWorks.innerText = settings.eng ? "How it Works" : "Помощь";
+  howItWorks.href = settings.eng ? "https://www.figma.com/community/plugin/903936058293238810" : "https://t.me/pluginsforfigma";
+  support.innerText = settings.eng ? "Support or share ideas" : "Поддержка и обратная связь";
 }

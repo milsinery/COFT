@@ -22,8 +22,11 @@ figma.ui.onmessage = (msg) => {
     return;
   }
 
+  // check random data
   if (range > 0) {
-    if (selectedLength === 1 && selectedFirstType === "TEXT") {
+    if(selectedLength === 1 && selectedFirstParentType === "FRAME") {
+      packTextInSelectedFrame(createRandom(randomType, range, lang), selectedFirst);
+    } else if (selectedLength === 1 && selectedFirstType === "TEXT") {
       packInFrameObjects(
         createRandom(randomType, range, lang),
         selectedFirst,
@@ -45,42 +48,32 @@ figma.ui.onmessage = (msg) => {
     } else {
       return;
     }
-
-    return;
   }
 
-  if (!content) {
-    return;
-  }
-
-  const text = prepareText(separator, content);
-
-  if (selectedLength === 0) {
-    packInFrameText(text);
-    return;
-  }
-
-  if (selectedFirstParentType === "COMPONENT") {
-    return;
-  }
-
-  if (selectedLength === 1 && selectedFirstType === "TEXT") {
-    packInFrameObjects(text, selectedFirst, selectedFirstParent);
-    return;
-  }
-
-  if (
-    selectedLength === 2 &&
-    selectedFirstType === "TEXT" &&
-    selectedSecondType === "FRAME"
-  ) {
-    packInSelectedFrame(
-      text,
-      selectedFirst,
-      selectedFirstParent,
-      selectedSecond
-    );
-    return;
+  // check text data
+  if (content) {
+    const text = prepareText(separator, content);
+    if (selectedLength === 0) {
+      packInFrameText(text);
+    } else if (selectedFirstParentType === "COMPONENT") {
+    } else if(selectedLength === 1 && selectedFirstParentType === "FRAME") {
+      packTextInSelectedFrame(text, selectedFirst);
+    } else if (selectedLength === 1 && selectedFirstType === "TEXT") {
+      packInFrameObjects(text, selectedFirst, selectedFirstParent);
+    } else if (
+      selectedLength === 2 &&
+      selectedFirstType === "TEXT" &&
+      selectedSecondType === "FRAME"
+    ) {
+      packInSelectedFrame(
+        text,
+        selectedFirst,
+        selectedFirstParent,
+        selectedSecond
+      );
+    } else {
+      return
+    }
   }
 };
 
@@ -166,6 +159,25 @@ function packInSelectedFrame(
   figma.notify("Done", { timeout: 1000 });
 }
 
+function packTextInSelectedFrame(
+  content: Array<string>,
+  selectedFirst
+) {
+  const frame = selectedFirst;
+  frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
+  frame.counterAxisSizingMode = "AUTO"
+
+  content.map(async (item) => {
+    const text: TextNode = figma.createText();
+    await figma.loadFontAsync({ family: "Roboto", style: "Regular" });
+    text.characters = item;
+    text.layoutAlign = "MIN";
+    frame.appendChild(text);
+  });
+
+  figma.notify("Done", { timeout: 1000 });
+}
+
 function createRandom(randomType, range, lang) {
   const result = [];
   faker.locale = lang;
@@ -181,6 +193,6 @@ function createRandom(randomType, range, lang) {
       result.push(func());
     }
   }
-
+  
   return result;
 }
