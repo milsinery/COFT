@@ -152,7 +152,7 @@ function packInSelectedFrame(
   selectedSecond
 ) {
   const frame = selectedSecond;
-  frame.layoutMode = frame.width > frame.height ? "HORIZONTAL" : "VERTICAL";
+  frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
   frame.counterAxisSizingMode = "AUTO"
   const originalText = selectedFirst.characters;
 
