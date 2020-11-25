@@ -146,9 +146,13 @@ function packInSelectedFrame(
   selectedSecond
 ) {
   const frame = selectedSecond;
-  frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
-  frame.counterAxisSizingMode = "AUTO"
-  frame.primaryAxisSizingMode = "AUTO";
+
+  if(frame.layoutMode === "NONE") {
+    frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
+    frame.primaryAxisSizingMode = "AUTO";
+    frame.counterAxisSizingMode = "AUTO"
+  }
+
   const originalText = selectedFirst.characters;
 
   content.map(async (item) => {
@@ -166,8 +170,12 @@ function packTextInSelectedFrame(
   selectedFirst
 ) {
   const frame = selectedFirst;
-  frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
-  frame.counterAxisSizingMode = "AUTO"
+
+  if(frame.layoutMode === "NONE") {
+    frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
+    frame.primaryAxisSizingMode = "AUTO";
+    frame.counterAxisSizingMode = "AUTO"
+  }
 
   content.map(async (item) => {
     const text: TextNode = figma.createText();
