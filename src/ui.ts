@@ -2,6 +2,8 @@ import "./ui.css";
 
 // default init
 const settings = { randomType: "name", eng: true };
+
+// add ui in-effect
 const plugin = document.getElementById("plugin");
 plugin.classList.add("effect-in");
 setTimeout(() => plugin.classList.remove("effect-in"), 300);
