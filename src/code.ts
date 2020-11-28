@@ -1,5 +1,5 @@
 figma.showUI(__html__);
-figma.ui.resize(304, 380);
+figma.ui.resize(304, 388);
 
 import faker from "faker";
 
@@ -190,7 +190,10 @@ function packTextInSelectedFrame(
 
 function createRandom(randomType, range, lang) {
   const result = [];
+  console.log(lang);
   faker.locale = lang;
+  console.log(faker.locale);
+  
 
   if (randomType === "name") {
     fillData(faker.name.findName);

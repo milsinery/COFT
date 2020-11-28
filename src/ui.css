@@ -38,7 +38,8 @@ textarea {
 button,
 h3,
 p,
-a {
+a,
+small {
   user-select: none;
 }
 
@@ -49,11 +50,11 @@ p {
 
 h3 {
   font-weight: 600;
+  height: 16px;
 }
 
 small {
   font-size: 10px;
-  color: var(--color-text-optional);
 }
 
 a {
@@ -70,7 +71,11 @@ button {
   font-size: 11px;
   font-weight: 400;
   height: 30px;
-  padding: 0px 15px;
+  padding: 0px 8px;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
 }
 
 button:active {
@@ -214,6 +219,14 @@ input[type="radio"]:active + .plugin__toggle {
   justify-content: space-between;
 }
 
+.plugin__buttons-line button {
+  margin: 0 8px 0 0;
+}
+
+.plugin__buttons-line button:last-child {
+  margin: 0;
+}
+
 .plugin__range-container {
   display: flex;
   align-items: center;
@@ -242,6 +255,7 @@ input[type="radio"]:active + .plugin__toggle {
 }
 
 .plugin__info {
+  height: 16px;
   margin: 16px;
   display: flex;
   align-items: center;
@@ -253,6 +267,35 @@ input[type="radio"]:active + .plugin__toggle {
 
 .plugin__info small:last-child {
   margin: 0;
+}
+
+.plugin__lang {
+  display: flex;
+  margin: 0 16px 0 0;
+}
+
+.plugin__lang-toggle {
+  margin: 0 4px 0 0;
+}
+
+.plugin__lang-toggle:last-child {
+  margin: 0;
+}
+
+input[type="radio"] + .plugin__lang-toggle {
+  color: var(--color-text-main);
+  transition: all 150ms ease-out;
+}
+
+input[type="radio"]:hover + .plugin__lang-toggle {
+  color: var(--color-accent);
+  transition: all 150ms ease-in;
+}
+
+input[type="radio"]:checked + .plugin__lang-toggle {
+  color: var(--color-text-optional);
+  cursor: default;
+  transition: all 150ms ease-in;
 }
 
 .effect-in {
