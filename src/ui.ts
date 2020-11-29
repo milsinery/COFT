@@ -98,6 +98,13 @@ const langRU = document.getElementById("ru") as HTMLInputElement;
 const langZH = document.getElementById("zh") as HTMLInputElement;
 const howItWorks = document.getElementById("how-it-works") as HTMLLinkElement;
 const support = document.getElementById("support") as HTMLLinkElement;
+const helpText1 = document.getElementById("help-text-1") as HTMLParagraphElement;
+const helpText2 = document.getElementById("help-text-2") as HTMLParagraphElement;
+const helpText3 = document.getElementById("help-text-3") as HTMLParagraphElement;
+const helpText4 = document.getElementById("help-text-4") as HTMLParagraphElement;
+const helpText5 = document.getElementById("help-text-5") as HTMLParagraphElement;
+const helpHead1 = document.getElementById("help-head-1") as HTMLHeadingElement;
+const helpHead2 = document.getElementById("help-head-2") as HTMLHeadingElement;
 
 langEN.onclick = () => langSwitcher("en");
 langRU.onclick = () => langSwitcher("ru");
@@ -128,9 +135,15 @@ function langSwitcher(lang) {
     nameLabel.innerText = "Имён";
     phoneLabel.innerText = "Телефонных номеров";
     howItWorks.innerText = "Помощь";
-    howItWorks.href = "https://t.me/pluginsforfigma";
     support.innerText = "Поддержать автора";
     support.href = "https://www.tinkoff.ru/sl/3sbfX45dVWj";
+    helpHead1.innerText = "Создать копии объекта";
+    helpHead2.innerText = "Вставить копии в выбранный фрейм";
+    helpText1.innerText = "Окно плагина всего лишь формирует текст — вы можете разделить свой текст по одному из правил или использовать генерируемые данные.";
+    helpText2.innerText = "Результат будет зависеть от того, что выбрано в макете.";
+    helpText3.innerText = "Если вы хотите создать копии объекта — выберите текстовый слой внутри него и примените одну из функций плагина.";
+    helpText4.innerText = "Если вы хотите вставить готовые копии объекта в определённый фрейм, то выберите также фрейм для вставки.";
+    helpText5.innerText = "Вы можете не выбирать объект для копирования и фрейм для вставки — в первом случае текст будет вставлен в макет в виде разделённых текстовых слоёв. Во втором — текст или копии объекта будут упакованы в специальный фрейм.";
   } else if (lang === "zh_CN") {
     titleFirst.innerText = "从文本创建";
     text.placeholder = "按规则切片的源文本";
@@ -142,9 +155,15 @@ function langSwitcher(lang) {
     nameLabel.innerText = "名字'";
     phoneLabel.innerText = "电话号码";
     howItWorks.innerText = "救命！";
-    howItWorks.href = "https://t.me/pluginsforfigma";
     support.innerText = "支持作者";
     support.href = "https://www.buymeacoffee.com/milsinery";
+    helpHead1.innerText = "创建对象的副本";
+    helpHead2.innerText = "将副本插入所选帧";
+    helpText1.innerText = "插件窗口只生成文本—您可以根据其中一个规则拆分文本或使用生成的数据。";
+    helpText2.innerText = "结果将取决于在布局中选择的内容。";
+    helpText3.innerText = "如果要创建对象的副本，请选择其中的文本层并使用其中一个插件函数。";
+    helpText4.innerText = "如果要在特定帧中插入对象的现成副本，请选择要插入的帧。";
+    helpText5.innerText = "您可以选择不选择要复制和粘贴框架的对象-在第一种情况下，文本将以分隔文本图层的形式粘贴到布局中。 在第二种情况下，对象的文本或副本将被打包在一个特殊的框架中。";
   } else {
     titleFirst.innerText = "Create from text";
     text.placeholder = "Source text for division by rule";
@@ -156,9 +175,26 @@ function langSwitcher(lang) {
     nameLabel.innerText = "Names";
     phoneLabel.innerText = "Phone Numbers";
     howItWorks.innerText = "How it works";
-    howItWorks.href =
-      "https://www.figma.com/community/plugin/903936058293238810";
     support.innerText = "Support the author";
     support.href = "https://www.buymeacoffee.com/milsinery";
+    helpHead1.innerText = "Create copies of an object";
+    helpHead2.innerText = "Insert copies into the selected frame";
+    helpText1.innerText = "The plugin window only generates text — you can split your text according to one of the rules or use the generated data.";
+    helpText2.innerText = "The result will depend on what is selected in the layout.";
+    helpText3.innerText = "If you want to create copies of an object, select the text layer inside it and use one of the plugin functions.";
+    helpText4.innerText = "If you want to insert ready-made copies of an object in a specific frame, select the frame to insert as well.";
+    helpText5.innerText = "You can choose not to select the object you want to copy and frame for paste — in the first case the text will be pasted to the layout in the form of delimited text layers.";
   }
 }
+
+// help functional
+const help = document.getElementById("help") as HTMLDivElement;
+const closer = document.getElementById("closer") as HTMLButtonElement;
+
+howItWorks.onclick = () => {
+  help.classList.add("plugin__help_active");
+}
+
+closer.onclick =() => {
+  help.classList.remove("plugin__help_active");
+};
