@@ -105,6 +105,7 @@ const helpText4 = document.getElementById("help-text-4") as HTMLParagraphElement
 const helpText5 = document.getElementById("help-text-5") as HTMLParagraphElement;
 const helpHead1 = document.getElementById("help-head-1") as HTMLHeadingElement;
 const helpHead2 = document.getElementById("help-head-2") as HTMLHeadingElement;
+const closer = document.getElementById("closer") as HTMLButtonElement;
 
 langEN.onclick = () => langSwitcher("en");
 langRU.onclick = () => langSwitcher("ru");
@@ -144,6 +145,7 @@ function langSwitcher(lang) {
     helpText3.innerText = "Если вы хотите создать копии объекта — выберите текстовый слой внутри него и примените одну из функций плагина.";
     helpText4.innerText = "Если вы хотите вставить готовые копии объекта в определённый фрейм, то выберите также фрейм для вставки.";
     helpText5.innerText = "Вы можете не выбирать объект для копирования и фрейм для вставки — в первом случае текст будет вставлен в макет в виде разделённых текстовых слоёв. Во втором — текст или копии объекта будут упакованы в специальный фрейм.";
+    closer.innerText = "Закрыть";
   } else if (lang === "zh_CN") {
     titleFirst.innerText = "从文本创建";
     text.placeholder = "按规则切片的源文本";
@@ -164,6 +166,7 @@ function langSwitcher(lang) {
     helpText3.innerText = "如果要创建对象的副本，请选择其中的文本层并使用其中一个插件函数。";
     helpText4.innerText = "如果要在特定帧中插入对象的现成副本，请选择要插入的帧。";
     helpText5.innerText = "您可以选择不选择要复制和粘贴框架的对象-在第一种情况下，文本将以分隔文本图层的形式粘贴到布局中。 在第二种情况下，对象的文本或副本将被打包在一个特殊的框架中。";
+    closer.innerText = "关闭";
   } else {
     titleFirst.innerText = "Create from text";
     text.placeholder = "Source text for division by rule";
@@ -184,12 +187,12 @@ function langSwitcher(lang) {
     helpText3.innerText = "If you want to create copies of an object, select the text layer inside it and use one of the plugin functions.";
     helpText4.innerText = "If you want to insert ready-made copies of an object in a specific frame, select the frame to insert as well.";
     helpText5.innerText = "You can choose not to select the object you want to copy and frame for paste — in the first case the text will be pasted to the layout in the form of delimited text layers.";
+    closer.innerText = "Close";
   }
 }
 
 // help functional
 const help = document.getElementById("help") as HTMLDivElement;
-const closer = document.getElementById("closer") as HTMLButtonElement;
 
 howItWorks.onclick = () => {
   help.classList.add("plugin__help_active");
