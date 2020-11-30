@@ -190,9 +190,7 @@ function packTextInSelectedFrame(
 
 function createRandom(randomType, range, lang) {
   const result = [];
-  console.log(lang);
   faker.locale = lang;
-  console.log(faker.locale);
   
 
   if (randomType === "name") {
