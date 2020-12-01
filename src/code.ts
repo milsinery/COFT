@@ -197,7 +197,19 @@ function createRandom(randomType, range, lang) {
     fillData(faker.name.findName);
   } else if (randomType == "phone") {
     fillData(faker.phone.phoneNumber);
-  }
+  } else if (randomType == "address") {
+    fillData(faker.address.streetAddress);
+  } else if (randomType == "city") {
+    fillData(faker.address.city);
+  } else if (randomType == "email") {
+    fillData(faker.internet.email);
+  } else if (randomType == "time") {
+    fillData(faker.time.recent);
+  } else if (randomType == "number") {
+    fillData(faker.random.number);
+  } else if (randomType == "paragraph") {
+    fillData(faker.lorem.paragraph);
+  } 
 
   function fillData(func) {
     for (let i = 0; i < range; i++) {
