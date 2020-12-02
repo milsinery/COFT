@@ -1,7 +1,7 @@
 import "./ui.css";
 
 // default init
-const settings = { randomType: "name", lang: "en" };
+const settings = { lang: "en" };
 
 // add ui in-effect
 const plugin = document.getElementById("plugin");
@@ -13,7 +13,6 @@ parent.postMessage(
   {
     pluginMessage: {
       range: 0,
-      randomType: settings.randomType,
       lang: settings.lang,
     },
   },
@@ -26,6 +25,8 @@ const paragraph = document.getElementById("paragraph") as HTMLButtonElement;
 const dot = document.getElementById("dot") as HTMLButtonElement;
 const comma = document.getElementById("comma") as HTMLButtonElement;
 const semicolon = document.getElementById("semicolon") as HTMLButtonElement;
+
+setTimeout(() => text.focus(), 100);
 
 paragraph.onclick = () => action("s*\ns*");
 dot.onclick = () => action("s*\\.s*");
@@ -46,23 +47,26 @@ function action(separator) {
 }
 
 // random functional unit
-const name = document.getElementById("name") as HTMLInputElement;
-const phone = document.getElementById("phone") as HTMLInputElement;
-const nameLabel = document.getElementById("name-label") as HTMLHeadingElement;
-const phoneLabel = document.getElementById("phone-label") as HTMLHeadingElement;
-const range = document.getElementById("range") as HTMLInputElement;
-const output = document.getElementById("range_output") as HTMLOutputElement;
+const names = document.getElementById("names") as HTMLInputElement;
+const phones = document.getElementById("phones") as HTMLInputElement;
+const addresses = document.getElementById("addresses") as HTMLInputElement;
+const cities = document.getElementById("cities") as HTMLInputElement;
+const emails = document.getElementById("emails") as HTMLInputElement;
+const paragraphs = document.getElementById("paragraphs") as HTMLInputElement;
 
-name.onclick = () => randomTypeAction("name");
-phone.onclick = () => randomTypeAction("phone");
-range.onclick = () => randomRangeAction();
+names.onclick = () => randomRangeAction("names", names);
+phones.onclick = () => randomRangeAction("phones", phones);
+addresses.onclick = () => randomRangeAction("addresses", addresses);
+cities.onclick = () => randomRangeAction("cities", cities);
+emails.onclick = () => randomRangeAction("emails", emails);
+paragraphs.onclick = () => randomRangeAction("paragraphs", paragraphs);
 
-function randomRangeAction() {
+function randomRangeAction(type, range) {
   parent.postMessage(
     {
       pluginMessage: {
         range: range.value,
-        randomType: settings.randomType,
+        randomType: type,
         lang: settings.lang,
       },
     },
@@ -70,26 +74,9 @@ function randomRangeAction() {
   );
 
   range.value = "0";
-  output.value = "0";
-}
-
-function randomTypeAction(msg) {
-  range.value = "0";
-  settings.randomType = msg;
-
-  parent.postMessage(
-    {
-      pluginMessage: {
-        randomType: settings.randomType,
-        lang: settings.lang,
-      },
-    },
-    "*"
-  );
 }
 
 // language switch functional
-const titleFirst = document.getElementById("title-first") as HTMLHeadingElement;
 const titleSecond = document.getElementById(
   "title-second"
 ) as HTMLHeadingElement;
@@ -126,16 +113,19 @@ function langSwitcher(lang) {
   );
 
   if (lang === "ru") {
-    titleFirst.innerText = "Создать из текста";
-    text.placeholder = "Исходный текст для нарезки по правилу";
-    paragraph.innerHTML = "Разделить текст после абзаца";
-    comma.innerHTML = "Запятой";
-    dot.innerHTML = "Точки";
-    semicolon.innerHTML = "Точки с запятой";
-    titleSecond.innerText = "Создать из случайных";
-    nameLabel.innerText = "Имён";
-    phoneLabel.innerText = "Телефонных номеров";
-    howItWorks.innerText = "Помощь";
+    text.placeholder = "Ваш текст для создания слоёв";
+    paragraph.innerHTML = "Разделить по абзацам";
+    comma.innerHTML = "После запятых";
+    dot.innerHTML = "Точек";
+    semicolon.innerHTML = "Точек с запятой";
+    titleSecond.innerText = "или создать из случайных";
+    names.innerHTML = "Имён";
+    phones.innerHTML = "Телефонных номеров";
+    cities.innerHTML = "Названия городов";
+    addresses.innerHTML = "Адресов";
+    emails.innerHTML = "Эмейлов";
+    paragraphs.innerHTML = "Параграфов";
+    howItWorks.innerHTML = "Помощь";
     support.innerText = "Поддержать автора";
     support.href = "https://www.tinkoff.ru/sl/3sbfX45dVWj";
     helpHead1.innerText = "Создать копии объекта";
@@ -147,15 +137,14 @@ function langSwitcher(lang) {
     helpText5.innerText = "Вы можете не выбирать объект для копирования и фрейм для вставки — в первом случае текст будет вставлен в макет в виде разделённых текстовых слоёв. Во втором — текст или копии объекта будут упакованы в специальный фрейм.";
     closer.innerText = "Закрыть";
   } else if (lang === "zh_CN") {
-    titleFirst.innerText = "从文本创建";
     text.placeholder = "按规则切片的源文本";
     paragraph.innerHTML = "拆分段落后的文本";
     comma.innerHTML = "逗号";
     dot.innerHTML = "点";
     semicolon.innerHTML = "分号";
     titleSecond.innerText = "从随机创建";
-    nameLabel.innerText = "名字'";
-    phoneLabel.innerText = "电话号码";
+    names.innerText = "名字'";
+    phones.innerText = "电话号码";
     howItWorks.innerText = "救命！";
     support.innerText = "支持作者";
     support.href = "https://www.buymeacoffee.com/milsinery";
@@ -168,15 +157,14 @@ function langSwitcher(lang) {
     helpText5.innerText = "您可以选择不选择要复制和粘贴框架的对象-在第一种情况下，文本将以分隔文本图层的形式粘贴到布局中。 在第二种情况下，对象的文本或副本将被打包在一个特殊的框架中。";
     closer.innerText = "关闭";
   } else {
-    titleFirst.innerText = "Create from text";
-    text.placeholder = "Source text for division by rule";
+    text.placeholder = "Your text for creating layers";
     paragraph.innerHTML = "Divide the text into paragraphs";
     comma.innerHTML = "After the comma";
     dot.innerHTML = "Dot";
     semicolon.innerHTML = "Semicolon";
-    titleSecond.innerText = "Сreate from random";
-    nameLabel.innerText = "Names";
-    phoneLabel.innerText = "Phone Numbers";
+    titleSecond.innerText = "or create from random";
+    names.innerText = "Names";
+    phones.innerText = "Phone Numbers";
     howItWorks.innerText = "How it works";
     support.innerText = "Support the author";
     support.href = "https://www.buymeacoffee.com/milsinery";

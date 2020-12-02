@@ -6,7 +6,7 @@
           The plugin window only generates text — you can split your text
           according to one of the rules or use the generated data.
         </p>
-  
+
         <p class="plugin__help-text" id="help-text-2">
           The result will depend on what is selected in the layout.
         </p>
@@ -37,60 +37,131 @@
       </p>
       <div class="plugin__help-gradient"></div>
     </div>
-    <div class="plugin__help-closer">
-      <button id="closer">Close</button>
+    <div class="plugin__help-bottom-panel">
+      <button class="plugin__help-closer" id="closer">Close</button>
     </div>
   </div>
 
   <div class="plugin__source-text">
-    <h3 class="plugin__title" id="title-first">Create from text</h3>
-
     <textarea
       class="plugin__textbox"
       name="text"
       id="text"
-      placeholder="Source text for division by rule"
+      placeholder="Your text for creating layers"
       spellcheck="false"
     ></textarea>
 
-    <button class="plugin__button-paragraph" id="paragraph">
+    <button class="plugin__source-button" id="paragraph">
       Divide the text into paragraphs
     </button>
-
-    <div class="plugin__buttons-line">
-      <button id="comma">After the comma</button>
-      <button id="dot">Dot</button>
-      <button id="semicolon">Semicolon</button>
-    </div>
+    <button class="plugin__source-button" id="comma">After the comma</button>
+    <button class="plugin__source-button" id="dot">Dot</button>
+    <button class="plugin__source-button" id="semicolon">Semicolon</button>
   </div>
 
-  <hr />
-
   <div class="plugin__random-generation">
-    <h3 class="plugin__title" id="title-second">Сreate from random</h3>
+    <h3 class="plugin__title" id="title-second">or create from random</h3>
 
-    <div class="plugin__switcher">
-      <input type="radio" name="random" value="name" id="name" checked />
-      <label class="plugin__toggle" for="name"
-        ><h3 id="name-label">Names</h3></label
-      >
-      <input type="radio" name="random" value="phone" id="phone" />
-      <label class="plugin__toggle" for="phone"
-        ><h3 id="phone-label">Phone Numbers</h3></label
-      >
+    <div class="plugin__random-button-container">
+      <button class="plugin__random-button">Names</button>
+      <div id="range-container" class="plugin__range-container">
+        <input
+          id="names"
+          type="range"
+          min="0"
+          max="20"
+          value="0"
+          step="1"
+          onmousemove="output_names.value=value"
+          onmouseup="output_names.value=0"
+        />
+        <output id="output_names">0</output>
+      </div>
     </div>
 
-    <div id="range-container" class="plugin__range-container">
-      <input
-        id="range"
-        type="range"
-        min="0"
-        max="20"
-        value="0"
-        step="1"
-        onmousemove="range_output.value=value"
-      />
-      <output id="range_output">0</output>
+    <div class="plugin__random-button-container">
+      <button class="plugin__random-button">Phone numbers</button>
+      <div id="range-container" class="plugin__range-container">
+        <input
+          id="phones"
+          type="range"
+          min="0"
+          max="20"
+          value="0"
+          step="1"
+          onmousemove="output_phones.value=value"
+          onmouseup="output_phones.value=0"
+        />
+        <output id="output_phones">0</output>
+      </div>
+    </div>
+
+    <div class="plugin__random-button-container">
+      <button class="plugin__random-button">Cities</button>
+      <div id="range-container" class="plugin__range-container">
+        <input
+          id="cities"
+          type="range"
+          min="0"
+          max="20"
+          value="0"
+          step="1"
+          onmousemove="output_cities.value=value"
+          onmouseup="output_cities.value=0"
+        />
+        <output id="output_cities">0</output>
+      </div>
+    </div>
+
+    <div class="plugin__random-button-container">
+      <button class="plugin__random-button">Addresses</button>
+      <div id="range-container" class="plugin__range-container">
+        <input
+          id="addresses"
+          type="range"
+          min="0"
+          max="20"
+          value="0"
+          step="1"
+          onmousemove="output_addresses.value=value"
+          onmouseup="output_addresses.value=0"
+        />
+        <output id="output_addresses">0</output>
+      </div>
+    </div>
+
+    <div class="plugin__random-button-container">
+      <button class="plugin__random-button">Emails</button>
+      <div id="range-container" class="plugin__range-container">
+        <input
+          id="emails"
+          type="range"
+          min="0"
+          max="20"
+          value="0"
+          step="1"
+          onmousemove="output_emails.value=value"
+          onmouseup="output_emails.value=0"
+        />
+        <output id="output_emails">0</output>
+      </div>
+    </div>
+
+    <div class="plugin__random-button-container">
+      <button class="plugin__random-button">Paragraphs</button>
+      <div id="range-container" class="plugin__range-container">
+        <input
+          id="paragraphs"
+          type="range"
+          min="0"
+          max="20"
+          value="0"
+          step="1"
+          onmousemove="output_paragraphs.value=value"
+          onmouseup="output_paragraphs.value=0"
+        />
+        <output id="output_paragraphs">0</output>
+      </div>
     </div>
   </div>
 

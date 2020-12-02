@@ -1,5 +1,5 @@
 figma.showUI(__html__);
-figma.ui.resize(304, 388);
+figma.ui.resize(304, 361);
 
 import faker from "faker";
 
@@ -193,21 +193,17 @@ function createRandom(randomType, range, lang) {
   faker.locale = lang;
   
 
-  if (randomType === "name") {
+  if (randomType === "names") {
     fillData(faker.name.findName);
-  } else if (randomType == "phone") {
+  } else if (randomType == "phones") {
     fillData(faker.phone.phoneNumber);
-  } else if (randomType == "address") {
+  } else if (randomType == "addresses") {
     fillData(faker.address.streetAddress);
-  } else if (randomType == "city") {
+  } else if (randomType == "cities") {
     fillData(faker.address.city);
-  } else if (randomType == "email") {
+  } else if (randomType == "emails") {
     fillData(faker.internet.email);
-  } else if (randomType == "time") {
-    fillData(faker.time.recent);
-  } else if (randomType == "number") {
-    fillData(faker.random.number);
-  } else if (randomType == "paragraph") {
+  } else if (randomType == "paragraphs") {
     fillData(faker.lorem.paragraph);
   } 
 
