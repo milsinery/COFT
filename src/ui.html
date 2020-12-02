@@ -63,7 +63,7 @@
     <h3 class="plugin__title" id="title-second">or create from random</h3>
 
     <div class="plugin__random-button-container">
-      <button class="plugin__random-button">Names</button>
+      <button class="plugin__random-button" id="btn-names">Names</button>
       <div id="range-container" class="plugin__range-container">
         <input
           id="names"
@@ -80,7 +80,9 @@
     </div>
 
     <div class="plugin__random-button-container">
-      <button class="plugin__random-button">Phone numbers</button>
+      <button class="plugin__random-button" id="btn-phones">
+        Phone numbers
+      </button>
       <div id="range-container" class="plugin__range-container">
         <input
           id="phones"
@@ -97,7 +99,7 @@
     </div>
 
     <div class="plugin__random-button-container">
-      <button class="plugin__random-button">Cities</button>
+      <button class="plugin__random-button" id="btn-cities">Cities</button>
       <div id="range-container" class="plugin__range-container">
         <input
           id="cities"
@@ -114,7 +116,9 @@
     </div>
 
     <div class="plugin__random-button-container">
-      <button class="plugin__random-button">Addresses</button>
+      <button class="plugin__random-button" id="btn-addresses">
+        Addresses
+      </button>
       <div id="range-container" class="plugin__range-container">
         <input
           id="addresses"
@@ -131,7 +135,7 @@
     </div>
 
     <div class="plugin__random-button-container">
-      <button class="plugin__random-button">Emails</button>
+      <button class="plugin__random-button" id="btn-emails">Emails</button>
       <div id="range-container" class="plugin__range-container">
         <input
           id="emails"
@@ -148,7 +152,9 @@
     </div>
 
     <div class="plugin__random-button-container">
-      <button class="plugin__random-button">Paragraphs</button>
+      <button class="plugin__random-button" id="btn-paragraphs">
+        Paragraphs
+      </button>
       <div id="range-container" class="plugin__range-container">
         <input
           id="paragraphs"
@@ -167,7 +173,25 @@
 
   <hr />
 
-  <div class="plugin__info">
+  <div class="plugin__control-panel">
+    <div class="plugin__info">
+      <small
+        ><a href="#" rel="noopener noreferrer" target="_blank" id="how-it-works"
+          >How it works</a
+        ></small
+      >
+      <small>
+        <a
+          href="https://www.buymeacoffee.com/milsinery"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="support"
+        >
+          Support the author
+        </a>
+      </small>
+    </div>
+
     <div class="plugin__lang">
       <input type="radio" name="lang" value="en" id="en" checked />
       <label class="plugin__lang-toggle" for="en"
@@ -182,21 +206,5 @@
         ><small id="zh-label">ZH</small></label
       >
     </div>
-
-    <small
-      ><a href="#" rel="noopener noreferrer" target="_blank" id="how-it-works"
-        >How it works</a
-      ></small
-    >
-    <small>
-      <a
-        href="https://www.buymeacoffee.com/milsinery"
-        target="_blank"
-        rel="noopener noreferrer"
-        id="support"
-      >
-        Support the author
-      </a>
-    </small>
   </div>
 </div>

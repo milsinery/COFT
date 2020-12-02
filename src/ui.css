@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
 :root {
   --color-accent: #FF1A1A;
@@ -203,7 +203,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .plugin__random-button {
-  width: 136px;
+  width: 152px;
 }
 
 .plugin__range-container {
@@ -241,9 +241,15 @@ input[type="range"]:active::-webkit-slider-thumb {
   transition: all 150ms ease;
 }
 
-.plugin__info {
+.plugin__control-panel {
   height: 24px;
   margin: 4px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plugin__info {
   display: flex;
   align-items: center;
 }
@@ -258,7 +264,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .plugin__lang {
   display: flex;
-  margin: 0 16px 0 0;
+  /* margin: 0 16px 0 0; */
 }
 
 .plugin__lang-toggle {
@@ -369,19 +375,21 @@ input[type="radio"]:checked + .plugin__lang-toggle {
 
 /* effects  */
 .effect-in {
-  animation: effect-in 600ms;
+  animation: effect-in 300ms ease;
 }
 
 .effect-lang-switch {
-  animation: effect-lang-switch 300ms;
+  animation: effect-lang-switch 150ms;
 }
 
 @keyframes effect-in {
   from {
     opacity: 0;
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
+    transform: scale(1);
   }
 }
 

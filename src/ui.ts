@@ -80,6 +80,12 @@ function randomRangeAction(type, range) {
 const titleSecond = document.getElementById(
   "title-second"
 ) as HTMLHeadingElement;
+const btnNames = document.getElementById("btn-names") as HTMLButtonElement;
+const btnPhones = document.getElementById("btn-phones") as HTMLButtonElement;
+const btnAddresses = document.getElementById("btn-addresses") as HTMLButtonElement;
+const btnCities = document.getElementById("btn-cities") as HTMLButtonElement;
+const btnEmails = document.getElementById("btn-emails") as HTMLButtonElement;
+const btnParagraphs = document.getElementById("btn-paragraphs") as HTMLButtonElement;
 const langEN = document.getElementById("en") as HTMLInputElement;
 const langRU = document.getElementById("ru") as HTMLInputElement;
 const langZH = document.getElementById("zh") as HTMLInputElement;
@@ -119,12 +125,12 @@ function langSwitcher(lang) {
     dot.innerHTML = "Точек";
     semicolon.innerHTML = "Точек с запятой";
     titleSecond.innerText = "или создать из случайных";
-    names.innerHTML = "Имён";
-    phones.innerHTML = "Телефонных номеров";
-    cities.innerHTML = "Названия городов";
-    addresses.innerHTML = "Адресов";
-    emails.innerHTML = "Эмейлов";
-    paragraphs.innerHTML = "Параграфов";
+    btnNames.innerHTML = "Имён";
+    btnPhones.innerHTML = "Телефонных номеров";
+    btnCities.innerHTML = "Названий городов";
+    btnAddresses.innerHTML = "Адресов";
+    btnEmails.innerHTML = "Эмейлов";
+    btnParagraphs.innerHTML = "Параграфов";
     howItWorks.innerHTML = "Помощь";
     support.innerText = "Поддержать автора";
     support.href = "https://www.tinkoff.ru/sl/3sbfX45dVWj";
@@ -143,8 +149,12 @@ function langSwitcher(lang) {
     dot.innerHTML = "点";
     semicolon.innerHTML = "分号";
     titleSecond.innerText = "从随机创建";
-    names.innerText = "名字'";
-    phones.innerText = "电话号码";
+    btnNames.innerHTML = "Имён";
+    btnPhones.innerHTML = "Телефонных номеров";
+    btnCities.innerHTML = "Названий городов";
+    btnAddresses.innerHTML = "Адресов";
+    btnEmails.innerHTML = "Эмейлов";
+    btnParagraphs.innerHTML = "Параграфов";
     howItWorks.innerText = "救命！";
     support.innerText = "支持作者";
     support.href = "https://www.buymeacoffee.com/milsinery";
@@ -163,8 +173,12 @@ function langSwitcher(lang) {
     dot.innerHTML = "Dot";
     semicolon.innerHTML = "Semicolon";
     titleSecond.innerText = "or create from random";
-    names.innerText = "Names";
-    phones.innerText = "Phone Numbers";
+    btnNames.innerHTML = "Имён";
+    btnPhones.innerHTML = "Телефонных номеров";
+    btnCities.innerHTML = "Названий городов";
+    btnAddresses.innerHTML = "Адресов";
+    btnEmails.innerHTML = "Эмейлов";
+    btnParagraphs.innerHTML = "Параграфов";
     howItWorks.innerText = "How it works";
     support.innerText = "Support the author";
     support.href = "https://www.buymeacoffee.com/milsinery";
