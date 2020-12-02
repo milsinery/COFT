@@ -1,5 +1,5 @@
 figma.showUI(__html__);
-figma.ui.resize(304, 361);
+figma.ui.resize(304, 370);
 
 import faker from "faker";
 
