@@ -225,7 +225,7 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 .plugin__range-container output {
-  width: 24px;
+  width: 16px;
 }
 
 .plugin__switcher {
@@ -379,7 +379,7 @@ input[type="radio"]:checked + .plugin__lang-toggle {
 }
 
 .effect-lang-switch {
-  animation: effect-lang-switch 150ms;
+  animation: effect-lang-switch 300ms;
 }
 
 @keyframes effect-in {
