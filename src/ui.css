@@ -63,6 +63,7 @@ textarea:focus {
 }
 
 a {
+  cursor: default;
   color: var(--color-text-main);
   text-decoration: none;
   transition: all 150ms ease;
@@ -70,7 +71,6 @@ a {
 
 a:hover{
   color: var(--color-accent);
-  cursor: pointer;
   transition: all 150ms ease;
 }
 
@@ -118,6 +118,7 @@ textarea::placeholder {
 
 textarea:focus,
 textarea:hover {
+  cursor: default;
   border-color: var(--color-accent);
   transition: all 150ms ease;
 }
@@ -136,9 +137,7 @@ input[type="range"] {
   width: 100%;
 }
 
-input[type="range"]:hover {
-  cursor: grab;
-}
+
 
 input[type="range"]::-webkit-slider-runnable-track {
   background-color: var(--color-pad-soft);
@@ -193,7 +192,6 @@ input[type="range"]:active::-webkit-slider-thumb {
 
 .plugin__source-button:hover,
 .plugin__help-closer:hover {
-  cursor: pointer;
   color: var(--color-accent);
   transition: all 150ms ease;
 }
@@ -210,13 +208,11 @@ input[type="range"]:active::-webkit-slider-thumb {
   display: flex;
   opacity: 0;
   align-items: center;
-  cursor: auto;
   transition: all 150ms ease;
 }
 
 .plugin__random-button-container:hover .plugin__range-container {
   opacity: 1;
-  cursor: grab;
   transition: all 150ms ease;
 }
 
@@ -281,7 +277,6 @@ input[type="radio"] + .plugin__lang-toggle {
 }
 
 input[type="radio"]:hover + .plugin__lang-toggle {
-  cursor: pointer;
   color: var(--color-accent);
   transition: all 150ms ease;
 }
@@ -289,7 +284,6 @@ input[type="radio"]:hover + .plugin__lang-toggle {
 input[type="radio"]:checked + .plugin__lang-toggle {
   color: var(--color-text-optional);
   pointer-events: none;
-  cursor: default;
   transition: all 150ms ease;
 }
 
@@ -387,11 +381,9 @@ input[type="radio"]:checked + .plugin__lang-toggle {
 @keyframes effect-in {
   from {
     opacity: 0;
-    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
