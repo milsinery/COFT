@@ -1,6 +1,6 @@
 {
   "name": "coft",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "create objects from text",
   "main": "code.js",
   "scripts": {
