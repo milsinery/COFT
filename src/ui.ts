@@ -6,7 +6,7 @@ const settings = { lang: "en" };
 // add ui in-effect
 const plugin = document.getElementById("plugin");
 plugin.classList.add("effect-in");
-setTimeout(() => plugin.classList.remove("effect-in"), 300);
+setTimeout(() => plugin.classList.remove("effect-in"), 600);
 
 // default data for code
 parent.postMessage(

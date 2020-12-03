@@ -21,15 +21,15 @@
 html,
 body {
   color: var(--color-text-main);
+  font-family: "Montserrat", sans-serif;
   height: 100%;
   overflow: hidden;
   width: 100%;
 }
 
-body,
 button,
 textarea {
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
   font-weight: 400;
 }
 
@@ -100,6 +100,7 @@ textarea {
   border: none;
   border-bottom: 1px solid var(--color-pad-soft);
   color: var(--color-text-main);
+  cursor: default;
   font-size: 11px;
   height: 48px;
   padding: 0 8px 0 0;
@@ -118,7 +119,6 @@ textarea::placeholder {
 
 textarea:focus,
 textarea:hover {
-  cursor: default;
   border-color: var(--color-accent);
   transition: all 150ms ease;
 }
