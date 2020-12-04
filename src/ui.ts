@@ -199,7 +199,7 @@ function langSwitcher(lang) {
     btnPhones.innerHTML = "Phone numbers";
     btnCities.innerHTML = "City names";
     btnAddresses.innerHTML = "Addresses";
-    btnEmails.innerHTML = "E-mails addresses";
+    btnEmails.innerHTML = "E-mail addresses";
     btnParagraphs.innerHTML = "Paragraphs";
     howItWorks.innerText = "How it works";
     support.innerText = "Support the author";
