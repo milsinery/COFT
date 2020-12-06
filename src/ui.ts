@@ -25,6 +25,7 @@ const paragraph = document.getElementById("paragraph") as HTMLButtonElement;
 const dot = document.getElementById("dot") as HTMLButtonElement;
 const comma = document.getElementById("comma") as HTMLButtonElement;
 const semicolon = document.getElementById("semicolon") as HTMLButtonElement;
+const space = document.getElementById("space") as HTMLButtonElement;
 
 setTimeout(() => text.focus(), 100);
 
@@ -32,6 +33,7 @@ paragraph.onclick = () => action("s*\ns*");
 dot.onclick = () => action("s*\\.s*");
 comma.onclick = () => action("s*,s*");
 semicolon.onclick = () => action("s*;s*");
+space.onclick = () => action("s* s*");
 
 function action(separator) {
   parent.postMessage(
@@ -138,6 +140,7 @@ function langSwitcher(lang) {
     comma.innerHTML = "После запятых";
     dot.innerHTML = "Точек";
     semicolon.innerHTML = "Точек с запятой";
+    space.innerHTML = "Пробелов";
     titleSecond.innerText = "или создать из случайных";
     btnNames.innerHTML = "Имён";
     btnPhones.innerHTML = "Телефонных номеров";
@@ -167,6 +170,7 @@ function langSwitcher(lang) {
     comma.innerHTML = "通过逗号分段";
     dot.innerHTML = "通过句号分段";
     semicolon.innerHTML = "通过分号分段";
+    space.innerHTML = "用空格分隔";
     titleSecond.innerText = "创建文字";
     btnNames.innerHTML = "随机名字";
     btnPhones.innerHTML = "随机电话号";
@@ -194,6 +198,7 @@ function langSwitcher(lang) {
     comma.innerHTML = "After the comma";
     dot.innerHTML = "Dot";
     semicolon.innerHTML = "Semicolon";
+    space.innerHTML = "Spaces";
     titleSecond.innerText = "or create from random";
     btnNames.innerHTML = "Names";
     btnPhones.innerHTML = "Phone numbers";
