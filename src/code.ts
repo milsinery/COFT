@@ -24,8 +24,11 @@ figma.ui.onmessage = (msg) => {
 
   // check random data
   if (range > 0) {
-    if(selectedLength === 1 && selectedFirstType === "FRAME") {
-      packTextInSelectedFrame(createRandom(randomType, range, lang), selectedFirst);
+    if (selectedLength === 1 && selectedFirstType === "FRAME") {
+      packTextInSelectedFrame(
+        createRandom(randomType, range, lang),
+        selectedFirst
+      );
     } else if (selectedLength === 1 && selectedFirstType === "TEXT") {
       packInFrameObjects(
         createRandom(randomType, range, lang),
@@ -56,7 +59,7 @@ figma.ui.onmessage = (msg) => {
     if (selectedLength === 0) {
       packInFrameText(text);
     } else if (selectedFirstParentType === "COMPONENT") {
-    } else if(selectedLength === 1 && selectedFirstType === "FRAME") {
+    } else if (selectedLength === 1 && selectedFirstType === "FRAME") {
       packTextInSelectedFrame(text, selectedFirst);
     } else if (selectedLength === 1 && selectedFirstType === "TEXT") {
       packInFrameObjects(text, selectedFirst, selectedFirstParent);
@@ -72,7 +75,7 @@ figma.ui.onmessage = (msg) => {
         selectedSecond
       );
     } else {
-      return
+      return;
     }
   }
 };
@@ -147,10 +150,10 @@ function packInSelectedFrame(
 ) {
   const frame = selectedSecond;
 
-  if(frame.layoutMode === "NONE") {
+  if (frame.layoutMode === "NONE") {
     frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
     frame.primaryAxisSizingMode = "AUTO";
-    frame.counterAxisSizingMode = "AUTO"
+    frame.counterAxisSizingMode = "AUTO";
   }
 
   const originalText = selectedFirst.characters;
@@ -165,16 +168,13 @@ function packInSelectedFrame(
   figma.notify("Done", { timeout: 1000 });
 }
 
-function packTextInSelectedFrame(
-  content: Array<string>,
-  selectedFirst
-) {
+function packTextInSelectedFrame(content: Array<string>, selectedFirst) {
   const frame = selectedFirst;
 
-  if(frame.layoutMode === "NONE") {
+  if (frame.layoutMode === "NONE") {
     frame.layoutMode = frame.width <= frame.height ? "VERTICAL" : "HORIZONTAL";
     frame.primaryAxisSizingMode = "AUTO";
-    frame.counterAxisSizingMode = "AUTO"
+    frame.counterAxisSizingMode = "AUTO";
   }
 
   content.map(async (item) => {
@@ -191,7 +191,6 @@ function packTextInSelectedFrame(
 function createRandom(randomType, range, lang) {
   const result = [];
   faker.locale = lang;
-  
 
   if (randomType === "names") {
     fillData(faker.name.findName);
@@ -205,7 +204,7 @@ function createRandom(randomType, range, lang) {
     fillData(faker.internet.email);
   } else if (randomType == "paragraphs") {
     fillData(faker.lorem.paragraph);
-  } 
+  }
 
   function fillData(func) {
     for (let i = 0; i < range; i++) {
