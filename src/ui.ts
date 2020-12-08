@@ -170,7 +170,7 @@ function langSwitcher(lang) {
     comma.innerHTML = "通过逗号分段";
     dot.innerHTML = "通过句号分段";
     semicolon.innerHTML = "通过分号分段";
-    space.innerHTML = "用空格分隔";
+    space.innerHTML = "通过空格分段";
     titleSecond.innerText = "创建文字";
     btnNames.innerHTML = "随机名字";
     btnPhones.innerHTML = "随机电话号";
