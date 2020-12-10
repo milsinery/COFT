@@ -34,7 +34,7 @@ figma.ui.onmessage = (msg) => {
     } else if (
       selectedLength === 2 &&
       selectedFirstType === "TEXT" &&
-      selectedSecondType === "FRAME" && selectedSecond?.children?.length === 0
+      selectedSecondType === "FRAME" && selectedSecond.children.length === 0
     ) {
       packInSelectedFrame(
         createRandom(randomType, range, lang),
