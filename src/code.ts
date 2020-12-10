@@ -18,10 +18,6 @@ figma.ui.onmessage = (msg) => {
     selectedFirst && findSelectedFirstParent(selectedFirst);
   const selectedFirstParentType = selectedFirst && selectedFirstParent.type;
 
-  if (selectedLength > 2) {
-    return;
-  }
-
   // check random data
   if (range > 0) {
     if (selectedLength === 1 && selectedFirstType === "FRAME") {
@@ -38,7 +34,7 @@ figma.ui.onmessage = (msg) => {
     } else if (
       selectedLength === 2 &&
       selectedFirstType === "TEXT" &&
-      selectedSecondType === "FRAME"
+      selectedSecondType === "FRAME" && selectedSecond?.children?.length === 0
     ) {
       packInSelectedFrame(
         createRandom(randomType, range, lang),
@@ -48,6 +44,10 @@ figma.ui.onmessage = (msg) => {
       );
     } else if (selectedLength === 0) {
       packInFrameText(createRandom(randomType, range, lang));
+    } else if (selectedLength >= 2 && isTypeText(selected)) {
+      for (let i = 0; i < selectedLength; i++) {
+        changeText(selected[i], createRandom(randomType, range, lang)[i]);
+      }
     } else {
       return;
     }
@@ -66,7 +66,7 @@ figma.ui.onmessage = (msg) => {
     } else if (
       selectedLength === 2 &&
       selectedFirstType === "TEXT" &&
-      selectedSecondType === "FRAME"
+      selectedSecondType === "FRAME" && selectedSecond?.children?.length === 0
     ) {
       packInSelectedFrame(
         text,
@@ -74,11 +74,35 @@ figma.ui.onmessage = (msg) => {
         selectedFirstParent,
         selectedSecond
       );
+    } else if (selectedLength >= 2 && isTypeText(selected)) {
+      for (let i = 0; i < selectedLength; i++) {
+        changeText(selected[i], text[i]);
+      }
     } else {
       return;
     }
   }
 };
+
+async function changeText(textLayer, text) {
+  if(text === undefined) return;
+  await figma.loadFontAsync(textLayer.fontName);
+  textLayer.characters = text;
+}
+
+function isTypeText(obj) {
+  let flag = true;
+
+  for (const item of obj) {
+    if (item.type === "TEXT") {
+      continue;
+    } else {
+      flag = false;
+      return;
+    }
+  }
+  return flag;
+}
 
 function findSelectedFirstParent(obj) {
   return obj.parent.type === "PAGE" ? obj : findSelectedFirstParent(obj.parent);
