@@ -3,9 +3,25 @@ figma.ui.resize(304, 390);
 
 import faker from "faker";
 
+// language init
+const settings = { lang: null };
+
+figma.clientStorage.getAsync("lang").then(item => {
+  figma.ui.postMessage(item ? item : "en");
+  settings.lang = item ? item : "en";
+});
+
 figma.ui.onmessage = (msg) => {
   // data from ui
-  const { separator, content, range, randomType, lang } = msg;
+  const { separator, content, range, randomType, type, lang } = msg;
+
+  // laguage setup
+  if(type === "langSwitch") {
+    figma.clientStorage.setAsync("lang", lang);
+    figma.clientStorage.getAsync("lang").then(item => {
+      settings.lang = item;
+    });
+  }
 
   // on page selected
   const selected = figma.currentPage.selection;
@@ -22,31 +38,31 @@ figma.ui.onmessage = (msg) => {
   if (range > 0) {
     if (selectedLength === 1 && selectedFirstType === "FRAME") {
       packTextInSelectedFrame(
-        createRandom(randomType, range, lang),
+        createRandom(randomType, range, settings.lang),
         selectedFirst
       );
     } else if (selectedLength === 1 && selectedFirstType === "TEXT") {
       packInFrameObjects(
-        createRandom(randomType, range, lang),
+        createRandom(randomType, range, settings.lang),
         selectedFirst,
         selectedFirstParent
       );
     } else if (
       selectedLength === 2 &&
       selectedFirstType === "TEXT" &&
-      selectedSecondType === "FRAME" && selectedSecond.children.length === 0
+      selectedSecondType === "FRAME" && selectedSecond?.children?.length === 0
     ) {
       packInSelectedFrame(
-        createRandom(randomType, range, lang),
+        createRandom(randomType, range, settings.lang),
         selectedFirst,
         selectedFirstParent,
         selectedSecond
       );
     } else if (selectedLength === 0) {
-      packInFrameText(createRandom(randomType, range, lang));
+      packInFrameText(createRandom(randomType, range, settings.lang));
     } else if (selectedLength >= 2 && isTypeText(selected)) {
       for (let i = 0; i < selectedLength; i++) {
-        changeText(selected[i], createRandom(randomType, range, lang)[i]);
+        changeText(selected[i], createRandom(randomType, range, settings.lang)[i]);
       }
     } else {
       return;
@@ -66,7 +82,8 @@ figma.ui.onmessage = (msg) => {
     } else if (
       selectedLength === 2 &&
       selectedFirstType === "TEXT" &&
-      selectedSecondType === "FRAME" && selectedSecond?.children?.length === 0
+      selectedSecondType === "FRAME" && 
+      selectedSecond?.children?.length === 0
     ) {
       packInSelectedFrame(
         text,
@@ -117,9 +134,13 @@ function prepareText(separator, arr) {
 
 function createFrame() {
   const frame = figma.createFrame();
+  frame.name = "👉 COFT";
   frame.layoutMode = "VERTICAL";
+  frame.layoutAlign = "STRETCH";
   frame.counterAxisSizingMode = "AUTO";
+  frame.counterAxisAlignItems = "MIN";
   frame.primaryAxisSizingMode = "AUTO";
+  frame.primaryAxisAlignItems = "MIN";
   frame.paddingLeft = 24;
   frame.paddingRight = 24;
   frame.paddingTop = 24;
@@ -127,7 +148,6 @@ function createFrame() {
   frame.cornerRadius = 8;
   frame.itemSpacing = 8;
   frame.expanded = false;
-  frame.name = "👉 COFT";
   frame.x = figma.viewport.center.x;
   frame.y = figma.viewport.center.y;
 

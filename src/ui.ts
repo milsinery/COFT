@@ -1,7 +1,8 @@
 import "./ui.css";
 
-// default init
-const settings = { lang: "en" };
+onmessage = (event) => {
+  langSwitcher(event.data.pluginMessage);
+};
 
 // add ui in-effect
 const plugin = document.getElementById("plugin");
@@ -12,8 +13,7 @@ setTimeout(() => plugin.classList.remove("effect-in"), 600);
 parent.postMessage(
   {
     pluginMessage: {
-      range: 0,
-      lang: settings.lang,
+      range: 0
     },
   },
   "*"
@@ -26,6 +26,9 @@ const dot = document.getElementById("dot") as HTMLButtonElement;
 const comma = document.getElementById("comma") as HTMLButtonElement;
 const semicolon = document.getElementById("semicolon") as HTMLButtonElement;
 const space = document.getElementById("space") as HTMLButtonElement;
+const en = document.getElementById("en") as HTMLInputElement;
+const ru = document.getElementById("ru") as HTMLInputElement;
+const zh = document.getElementById("zh") as HTMLInputElement;
 
 setTimeout(() => text.focus(), 100);
 
@@ -69,7 +72,6 @@ function randomRangeAction(type, range) {
       pluginMessage: {
         range: range.value,
         randomType: type,
-        lang: settings.lang,
       },
     },
     "*"
@@ -121,20 +123,17 @@ langRU.onclick = () => langSwitcher("ru");
 langZH.onclick = () => langSwitcher("zh_CN");
 
 function langSwitcher(lang) {
-  settings.lang = lang;
-  plugin.classList.add("effect-lang-switch");
-  setTimeout(() => plugin.classList.remove("effect-lang-switch"), 300);
-
-  parent.postMessage(
-    {
-      pluginMessage: {
-        lang: settings.lang,
-      },
-    },
-    "*"
-  );
-
   if (lang === "ru") {
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "langSwitch",
+          lang: "ru"
+        },
+      },
+      "*"
+    );
+
     text.placeholder = "Ваш текст для создания слоёв";
     paragraph.innerHTML = "Разделить по абзацам";
     comma.innerHTML = "После запятых";
@@ -164,7 +163,18 @@ function langSwitcher(lang) {
     helpText5.innerText =
       "Вы можете не выбирать объект для копирования и фрейм для вставки — в первом случае текст будет вставлен в макет в виде разделённых текстовых слоёв. Во втором — текст или копии объекта будут упакованы в специальный фрейм.";
     closer.innerText = "Закрыть";
+    langRU.checked = true;
   } else if (lang === "zh_CN") {
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "langSwitch",
+          lang: "zh_CN"
+        },
+      },
+      "*"
+    );
+
     text.placeholder = "您想要切分的文本";
     paragraph.innerHTML = "将文字分段";
     comma.innerHTML = "通过逗号分段";
@@ -192,7 +202,18 @@ function langSwitcher(lang) {
     helpText5.innerText =
       "您可以不选择要复制粘贴的对象或不选择特定框架，第一种情况，文本将以分好的形式粘贴到模版中。 第二种情况，文本或副本将包装在特种框架中。";
     closer.innerText = "特写";
+    langZH.checked = true;
   } else {
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "langSwitch",
+          lang: "en"
+        },
+      },
+      "*"
+    );
+
     text.placeholder = "Your text for creating layers";
     paragraph.innerHTML = "Divide the text into paragraphs";
     comma.innerHTML = "After the comma";
@@ -222,6 +243,7 @@ function langSwitcher(lang) {
     helpText5.innerText =
       "You can choose not to select the object you want to copy and frame for paste — in the first case the text will be pasted to the layout in the form of delimited text layers.";
     closer.innerText = "Close";
+    langEN.checked = true;
   }
 }
 
