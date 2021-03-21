@@ -12,6 +12,8 @@ figma.clientStorage.getAsync("lang").then(item => {
 });
 
 figma.ui.onmessage = (msg) => {
+  figma.currentPage.setRelaunchData({ open: '' });
+
   // data from ui
   const { separator, content, range, randomType, type, lang } = msg;
 
