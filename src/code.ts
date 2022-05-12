@@ -1,4 +1,4 @@
-figma.showUI(__html__);
+figma.showUI(__html__, { themeColors: true });
 figma.ui.resize(304, 390);
 
 import faker from "faker";

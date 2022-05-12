@@ -62,6 +62,7 @@ interface ClientStorageAPI {
 
 type ShowUIOptions = {
   visible?: boolean,
+  themeColors?: boolean,
   width?: number,
   height?: number,
 }
